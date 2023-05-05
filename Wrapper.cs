@@ -61,33 +61,37 @@ namespace ScriptWrapper
             string outputFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "acronis_connectivity_check.txt");
             process.OutputDataReceived += (s, data) =>
             {
-                if (!string.IsNullOrEmpty(data.Data))
+                if (data.Data != null)
                 {
-                    outputLines.Add(data.Data);
-                }
-
-                // Update the RichTextBox with the output data
-                this.Invoke((MethodInvoker)delegate
-                {
-                    string[] parts = data.Data.Split(new string[] { "SUCCESS", "FAILED" }, StringSplitOptions.None);
-                    FontStyle originalFontStyle = richTextBoxOutput.Font.Style;
-                    for (int i = 0; i < parts.Length; i++)
+                    if (checkBoxSaveOutputToFile.Checked)
                     {
-                        richTextBoxOutput.SelectionColor = richTextBoxOutput.ForeColor;
-                        richTextBoxOutput.SelectionFont = new Font(richTextBoxOutput.Font, originalFontStyle);
-                        richTextBoxOutput.AppendText(parts[i]);
-
-                        if (i < parts.Length - 1)
-                        {
-                            string nextWord = data.Data.Contains("SUCCESS") ? "SUCCESS" : "FAILED";
-                            richTextBoxOutput.SelectionColor = nextWord == "SUCCESS" ? Color.Green : Color.Red;
-                            richTextBoxOutput.SelectionFont = new Font(richTextBoxOutput.Font, FontStyle.Bold);
-                            richTextBoxOutput.AppendText(nextWord);
-                        }
+                        outputLines.Add(data.Data);
                     }
-                    richTextBoxOutput.AppendText(Environment.NewLine);
-                });
+
+                    // Update the RichTextBox with the output data
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        string[] parts = data.Data.Split(new string[] { "SUCCESS", "FAILED" }, StringSplitOptions.None);
+                        FontStyle originalFontStyle = richTextBoxOutput.Font.Style;
+                        for (int i = 0; i < parts.Length; i++)
+                        {
+                            richTextBoxOutput.SelectionColor = richTextBoxOutput.ForeColor;
+                            richTextBoxOutput.SelectionFont = new Font(richTextBoxOutput.Font, originalFontStyle);
+                            richTextBoxOutput.AppendText(parts[i]);
+
+                            if (i < parts.Length - 1)
+                            {
+                                string nextWord = data.Data.Contains("SUCCESS") ? "SUCCESS" : "FAILED";
+                                richTextBoxOutput.SelectionColor = nextWord == "SUCCESS" ? Color.Green : Color.Red;
+                                richTextBoxOutput.SelectionFont = new Font(richTextBoxOutput.Font, FontStyle.Bold);
+                                richTextBoxOutput.AppendText(nextWord);
+                            }
+                        }
+                        richTextBoxOutput.AppendText(Environment.NewLine);
+                    });
+                }
             };
+
 
             process.ErrorDataReceived += (s, data) =>
             {

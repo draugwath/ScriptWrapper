@@ -1,0 +1,13 @@
+C:\Users\draugwath\source\repos\ScriptWrapper\ScriptWrapper\bin\Release\net4.0-windows\ScriptWrapper.exe.config
+C:\Users\draugwath\source\repos\ScriptWrapper\ScriptWrapper\bin\Release\net4.0-windows\ScriptWrapper.exe
+C:\Users\draugwath\source\repos\ScriptWrapper\ScriptWrapper\bin\Release\net4.0-windows\ScriptWrapper.pdb
+C:\Users\draugwath\source\repos\ScriptWrapper\ScriptWrapper\obj\Release\net4.0-windows\ScriptWrapper.csproj.AssemblyReference.cache
+C:\Users\draugwath\source\repos\ScriptWrapper\ScriptWrapper\obj\Release\net4.0-windows\ScriptWrapper.csproj.SuggestedBindingRedirects.cache
+C:\Users\draugwath\source\repos\ScriptWrapper\ScriptWrapper\obj\Release\net4.0-windows\ScriptWrapper.Wrapper.resources
+C:\Users\draugwath\source\repos\ScriptWrapper\ScriptWrapper\obj\Release\net4.0-windows\ScriptWrapper.csproj.GenerateResource.cache
+C:\Users\draugwath\source\repos\ScriptWrapper\ScriptWrapper\obj\Release\net4.0-windows\ScriptWrapper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\draugwath\source\repos\ScriptWrapper\ScriptWrapper\obj\Release\net4.0-windows\ScriptWrapper.AssemblyInfoInputs.cache
+C:\Users\draugwath\source\repos\ScriptWrapper\ScriptWrapper\obj\Release\net4.0-windows\ScriptWrapper.AssemblyInfo.cs
+C:\Users\draugwath\source\repos\ScriptWrapper\ScriptWrapper\obj\Release\net4.0-windows\ScriptWrapper.csproj.CoreCompileInputs.cache
+C:\Users\draugwath\source\repos\ScriptWrapper\ScriptWrapper\obj\Release\net4.0-windows\ScriptWrapper.exe
+C:\Users\draugwath\source\repos\ScriptWrapper\ScriptWrapper\obj\Release\net4.0-windows\ScriptWrapper.pdb

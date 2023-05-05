@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace ScriptWrapper
 {
@@ -27,6 +28,7 @@ namespace ScriptWrapper
 
         private void ButtonRunTest_Click(object sender, EventArgs e)
         {
+            List<string> outputLines = new List<string>();
             string username = textBoxUsername.Text;
             string password = textBoxPassword.Text;
 
@@ -56,45 +58,35 @@ namespace ScriptWrapper
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.CreateNoWindow = true;
             process.EnableRaisingEvents = true;
-
-
             string outputFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "acronis_connectivity_check.txt");
             process.OutputDataReceived += (s, data) =>
             {
                 if (!string.IsNullOrEmpty(data.Data))
                 {
-                    // Create a new StreamWriter object inside the event handler
-                    using (StreamWriter outputFile = new StreamWriter(outputFilePath, true))
+                    outputLines.Add(data.Data);
+                }
+
+                // Update the RichTextBox with the output data
+                this.Invoke((MethodInvoker)delegate
+                {
+                    string[] parts = data.Data.Split(new string[] { "SUCCESS", "FAILED" }, StringSplitOptions.None);
+                    FontStyle originalFontStyle = richTextBoxOutput.Font.Style;
+                    for (int i = 0; i < parts.Length; i++)
                     {
-                        // Write the output to the .txt file
-                        if (checkBoxSaveOutputToFile.Checked)
+                        richTextBoxOutput.SelectionColor = richTextBoxOutput.ForeColor;
+                        richTextBoxOutput.SelectionFont = new Font(richTextBoxOutput.Font, originalFontStyle);
+                        richTextBoxOutput.AppendText(parts[i]);
+
+                        if (i < parts.Length - 1)
                         {
-                            outputFile.WriteLine(data.Data);
+                            string nextWord = data.Data.Contains("SUCCESS") ? "SUCCESS" : "FAILED";
+                            richTextBoxOutput.SelectionColor = nextWord == "SUCCESS" ? Color.Green : Color.Red;
+                            richTextBoxOutput.SelectionFont = new Font(richTextBoxOutput.Font, FontStyle.Bold);
+                            richTextBoxOutput.AppendText(nextWord);
                         }
                     }
-
-                    // Update the RichTextBox with the output data
-                    this.Invoke((MethodInvoker)delegate
-                    {
-                        string[] parts = data.Data.Split(new string[] { "SUCCESS", "FAILED" }, StringSplitOptions.None);
-                        FontStyle originalFontStyle = richTextBoxOutput.Font.Style;
-                        for (int i = 0; i < parts.Length; i++)
-                        {
-                            richTextBoxOutput.SelectionColor = richTextBoxOutput.ForeColor;
-                            richTextBoxOutput.SelectionFont = new Font(richTextBoxOutput.Font, originalFontStyle);
-                            richTextBoxOutput.AppendText(parts[i]);
-
-                            if (i < parts.Length - 1)
-                            {
-                                string nextWord = data.Data.Contains("SUCCESS") ? "SUCCESS" : "FAILED";
-                                richTextBoxOutput.SelectionColor = nextWord == "SUCCESS" ? Color.Green : Color.Red;
-                                richTextBoxOutput.SelectionFont = new Font(richTextBoxOutput.Font, FontStyle.Bold);
-                                richTextBoxOutput.AppendText(nextWord);
-                            }
-                        }
-                        richTextBoxOutput.AppendText(Environment.NewLine);
-                    });
-                }
+                    richTextBoxOutput.AppendText(Environment.NewLine);
+                });
             };
 
             process.ErrorDataReceived += (s, data) =>
@@ -105,8 +97,13 @@ namespace ScriptWrapper
                     MessageBox.Show("Error: " + data.Data);
                 }
             };
+
             process.Exited += (s, args) =>
             {
+                if (checkBoxSaveOutputToFile.Checked)
+                {
+                    File.WriteAllLines(outputFilePath, outputLines);
+                }
                 MessageBox.Show("Process completed.");
             };
 
@@ -114,6 +111,7 @@ namespace ScriptWrapper
             process.BeginOutputReadLine();
             process.BeginErrorReadLine();
         }
+
 
         private void checkBoxSaveOutputToFile_CheckedChanged(object sender, EventArgs e)
         {

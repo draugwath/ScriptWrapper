@@ -1,0 +1,3 @@
+C:\C#\Wrapper\ScriptWrapper.exe
+C:\C#\Wrapper\ScriptWrapper.exe.config
+C:\C#\Wrapper\ScriptWrapper.pdb

@@ -2,8 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
+    <TargetFramework>net4.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>3868956.ico</ApplicationIcon>
   </PropertyGroup>

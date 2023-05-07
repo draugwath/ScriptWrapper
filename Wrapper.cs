@@ -4,8 +4,9 @@ using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
+using System.Reflection;
 
-namespace ScriptWrapper
+namespace AcronisConsumerConnectivityTest
 {
     public partial class Wrapper : Form
     {
@@ -39,12 +40,17 @@ namespace ScriptWrapper
             }
             if (string.IsNullOrWhiteSpace(password) && !checkBoxNoLogin.Checked)
             {
-                MessageBox.Show("Please enter a valid username.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter a valid password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            string tempFolder = Path.Combine(Path.GetTempPath(), "debug_tools_new");
+            Directory.CreateDirectory(tempFolder);
+            ExtractFolderResource("ScriptWrapper.debug_tools_new.", tempFolder);
+
             Process process = new Process();
-            process.StartInfo.FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "account_control_test.exe");
+            process.StartInfo.FileName = Path.Combine(tempFolder, "account_control_test.exe");
+
             if (checkBoxNoLogin.Checked)
             {
                 process.StartInfo.Arguments = $"/connectivity_test /no_login";
@@ -120,6 +126,27 @@ namespace ScriptWrapper
         private void checkBoxSaveOutputToFile_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ExtractFolderResource(string resourcePrefix, string outputFolder)
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string[] resources = assembly.GetManifestResourceNames();
+
+            foreach (string resourceName in resources)
+            {
+                if (resourceName.StartsWith(resourcePrefix))
+                {
+                    string fileName = resourceName.Substring(resourcePrefix.Length);
+                    string outputPath = Path.Combine(outputFolder, fileName);
+
+                    using (Stream resourceStream = assembly.GetManifestResourceStream(resourceName))
+                    using (FileStream fileStream = new FileStream(outputPath, FileMode.Create))
+                    {
+                        resourceStream.CopyTo(fileStream);
+                    }
+                }
+            }
         }
     }
 }

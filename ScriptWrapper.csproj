@@ -8,7 +8,60 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="debug-tools-new\account_control_test.exe" />
+    <None Remove="debug-tools-new\archive3.dll" />
+    <None Remove="debug-tools-new\archive3_adapter.dll" />
+    <None Remove="debug-tools-new\expat.dll" />
+    <None Remove="debug-tools-new\file_backup.dll" />
+    <None Remove="debug-tools-new\libcrypto10.dll" />
+    <None Remove="debug-tools-new\libssl10.dll" />
+    <None Remove="debug-tools-new\logging.dll" />
+    <None Remove="debug-tools-new\pcs_io.dll" />
+    <None Remove="debug-tools-new\pcs_stats.dll" />
+    <None Remove="debug-tools-new\resource.dll" />
+    <None Remove="debug-tools-new\snapapi.dll" />
+    <None Remove="debug-tools-new\thread_pool.dll" />
+    <None Remove="debug-tools-new\ulxmlrpcpp.dll" />
+    <None Remove="debug-tools-new\winpthreads4.dll" />
+    <None Remove="debug-tools-new\zstd.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="3868956.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="debug-tools-new\account_control_test.exe" />
+    <EmbeddedResource Include="debug-tools-new\archive3.dll" />
+    <EmbeddedResource Include="debug-tools-new\archive3_adapter.dll" />
+    <EmbeddedResource Include="debug-tools-new\expat.dll" />
+    <EmbeddedResource Include="debug-tools-new\file_backup.dll" />
+    <EmbeddedResource Include="debug-tools-new\libcrypto10.dll" />
+    <EmbeddedResource Include="debug-tools-new\libssl10.dll" />
+    <EmbeddedResource Include="debug-tools-new\logging.dll" />
+    <EmbeddedResource Include="debug-tools-new\pcs_io.dll" />
+    <EmbeddedResource Include="debug-tools-new\pcs_stats.dll" />
+    <EmbeddedResource Include="debug-tools-new\resource.dll" />
+    <EmbeddedResource Include="debug-tools-new\snapapi.dll" />
+    <EmbeddedResource Include="debug-tools-new\thread_pool.dll" />
+    <EmbeddedResource Include="debug-tools-new\ulxmlrpcpp.dll" />
+    <EmbeddedResource Include="debug-tools-new\winpthreads4.dll" />
+    <EmbeddedResource Include="debug-tools-new\zstd.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

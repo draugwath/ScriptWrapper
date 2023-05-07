@@ -1,0 +1,47 @@
+# Ignore the debug-tools-new folder
+debug-tools-new/
+
+# Ignore build folders
+[Bb]in/
+[Oo]bj/
+
+# Ignore the packages folder
+packages/
+
+# Ignore user-specific files
+*.user
+*.suo
+*.userprefs
+
+# Ignore Visual Studio temporary files
+*.cache
+*.pidb
+*.log
+*.scc
+
+# Ignore ReSharper temporary files
+_ReSharper*/
+
+# Ignore .vs folder
+.vs/
+
+# Ignore other common files
+*.bak
+*.swp
+*~.nib
+*.swm
+*.swo
+*.swn
+*.suo
+*.sln.docstates
+*.sln.ide/
+
+# Ignore other files
+*.dbmdl
+*.dbproj.schemaview
+*.pfx
+*.publishsettings
+*.psess
+*.vsp
+*.vspx
+*.vssscc

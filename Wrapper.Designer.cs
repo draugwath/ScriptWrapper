@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
-namespace ScriptWrapper
+namespace AcronisConsumerConnectivityTest
 {
     partial class Wrapper
     {
@@ -135,8 +135,8 @@ namespace ScriptWrapper
             Controls.Add(checkBoxNoLogin);
             MaximumSize = new Size(1294, 2147483591);
             MinimumSize = new Size(1294, 71);
-            Name = "Wrapper";
-            Text = "Connection Test";
+            Name = "Acronis Consumer Connectivity Test";
+            Text = "Acronis Consumer Connectivity Test";
             ResumeLayout(false);
             PerformLayout();
         }

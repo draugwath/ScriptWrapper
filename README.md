@@ -8,7 +8,7 @@ ScriptWrapper is a Windows Forms application that provides a graphical user inte
 
 - [Visual Studio](https://visualstudio.microsoft.com/downloads/) (2019 or earlier recommended)
 - .NET 4.0 SDK (comes with Visual Studio 2019)
-- The proprietary script and its dependencies (debug-tools-new folder) should be placed in the root directory of the repository.
+- The proprietary script and its dependencies (```debug-tools-new``` folder) should be placed in the root directory of the repository.
 
 ### Building the Solution
 

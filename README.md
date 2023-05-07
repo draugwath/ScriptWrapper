@@ -1,6 +1,6 @@
 # ScriptWrapper
 
-ScriptWrapper is a Windows Forms application that provides a graphical user interface (GUI) for controlling a proprietary script. The application allows users to configure options, run the script, and view the script output.
+ScriptWrapper is a Windows Forms application that provides a graphical user interface (GUI) for controlling a proprietary script. The application allows users to configure options, run the script, and view the script output. It builds as a single-file application, which unzips the GUI and script into a temporary folder and delivers users a simple solution with GUI.
 
 ## Getting Started
 

@@ -1,3 +1,0 @@
-C:\C#\Wrapper\Release\ScriptWrapper.exe
-C:\C#\Wrapper\Release\ScriptWrapper.exe.config
-C:\C#\Wrapper\Release\ScriptWrapper.pdb

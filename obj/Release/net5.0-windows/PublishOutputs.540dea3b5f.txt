@@ -1,5 +1,0 @@
-C:\C#\Wrapper\ScriptWrapper.exe
-C:\C#\Wrapper\ScriptWrapper.dll
-C:\C#\Wrapper\ScriptWrapper.deps.json
-C:\C#\Wrapper\ScriptWrapper.runtimeconfig.json
-C:\C#\Wrapper\ScriptWrapper.pdb
